@@ -3,4 +3,4 @@ This project is primarily a cmake based system to build libraries from source th
 
 # Available libraries.
 
-* Eigen - Version 3.3.7
+* Google Test - Version 1.8.1
