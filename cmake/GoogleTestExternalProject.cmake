@@ -1,7 +1,7 @@
 #[[ Cmake guard. ]]
 if(TARGET GoogleTestExternalProject)
     return()
-endif(TARGET GoogleTestExternalProject)
+endif()
 
 include(ExternalProject)
 

@@ -1,7 +1,7 @@
 #[[ CMakes version of pragma once. ]]
 if(TARGET EigenExternalProject)
     return()
-endif(EigenExternalProject)
+endif()
 
 include(ExternalProject)
 
