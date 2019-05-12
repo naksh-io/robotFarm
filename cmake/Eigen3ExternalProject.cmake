@@ -1,9 +1,9 @@
 #[[ CMakes version of pragma once. ]]
-if(TARGET EigenExternalProject)
+if(TARGET Eigen3ExternalProject)
     return()
 endif()
 
 include(ExternalProject)
 
-ExternalProject_Add(EigenExternalProject
+ExternalProject_Add(Eigen3ExternalProject
         )
