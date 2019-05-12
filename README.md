@@ -26,9 +26,11 @@ TODO: Find apt package corresponding to below items.
 * libgl1-mesa-dev
 * libxt-dev
 
+## ATLAS Dependencies (LAPACK & BLAS):
+* gfortran
+
 ## Upcoming:
-* LAPACK
-* BLAS
 * Suitesparse
+* Glog
 * Ceres
 * OpenCV
