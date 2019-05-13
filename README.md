@@ -29,6 +29,9 @@ TODO: Find apt package corresponding to below items.
 ## ATLAS Dependencies (LAPACK & BLAS):
 * gfortran
 
+## Suite Sparse Dependencies:
+* m4
+
 ## Upcoming:
 * Suitesparse
 * Glog

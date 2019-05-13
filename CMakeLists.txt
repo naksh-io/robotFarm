@@ -32,6 +32,11 @@ if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_ATLAS)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/AtlasExternalProject.cmake)
 endif ()
 
+option(ROBOT_FARM_BUILD_SUITE_SPARSE "Build Suite Sparse" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_SUITE_SPARSE)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SuiteSparseExternalProject.cmake)
+endif ()
+
 option(ROBOT_FARM_BUILD_EIGEN3 "Build Eigen3" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_EIGEN3)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Eigen3ExternalProject.cmake)

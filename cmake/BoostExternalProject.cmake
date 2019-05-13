@@ -16,8 +16,10 @@ externalproject_add(BoostExternalProject
                     URL ${ROBOT_FARM_BOOST_URL}
                     DOWNLOAD_NO_PROGRESS ON
 
-                    CONFIGURE_COMMAND LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{LD_LIBRARY_PATH}
-                    PATH=${CMAKE_INSTALL_PREFIX}/bin:$ENV{PATH} <SOURCE_DIR>/bootstrap.sh
+                    CONFIGURE_COMMAND
+                    LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{LD_LIBRARY_PATH}
+                    PATH=${CMAKE_INSTALL_PREFIX}/bin:$ENV{PATH}
+                    <SOURCE_DIR>/bootstrap.sh
                     --prefix=${CMAKE_INSTALL_PREFIX} --with-python-root=${CMAKE_INSTALL_PREFIX}
 
                     BUILD_COMMAND <SOURCE_DIR>/b2 install
