@@ -7,9 +7,11 @@ This project is primarily a cmake based system to build libraries from source th
 * Boost
 * VTK
 * Eigen3
+* GFlags
+* Glog
+* Ceres Solver
 
 ## Python Dependencies
-TODO: Find apt package corresponding to below items. 
 * libbz2-dev
 * libncurses5-dev
 * libgdbm-dev
@@ -36,8 +38,9 @@ TODO: Find apt package corresponding to below items.
 ## Suite Sparse Dependencies: UNAVAILABLE
 * m4
 
+## Ceres dependencies:
+* libatlas-base-dev
+* libsuitesparse-dev
+
 ## Upcoming:
-* Suitesparse
-* Glog
-* Ceres
 * OpenCV
