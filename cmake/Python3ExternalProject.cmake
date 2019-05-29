@@ -15,6 +15,19 @@ externalproject_add(Python3ExternalProject
                     URL ${ROBOT_FARM_PYTHON3_URL}
                     DOWNLOAD_NO_PROGRESS ON
 
-                    CONFIGURE_COMMAND <SOURCE_DIR>/configure --silent --prefix=${CMAKE_INSTALL_PREFIX}
-                    --enable-shared --without-pymalloc --enable-ipv6
-                    --enable-optimizations --with-lto --with-address-sanitizer)
+                    CONFIGURE_COMMAND <SOURCE_DIR>/configure
+                    --silent
+                    --prefix=${CMAKE_INSTALL_PREFIX}
+                    --enable-shared
+                    --enable-optimizations
+                    --enable-loadable-sqlite-extensions
+                    --enable-ipv6
+                    --with-lto
+                    --with-address-sanitizer
+                    --with-system-expat
+                    --with-system-ffi
+                    --with-system-libmpdec
+                    --with-signal-module
+                    --with-threads
+                    --with-fpectl
+                    --without-pymalloc)

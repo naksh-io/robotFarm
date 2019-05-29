@@ -1,4 +1,4 @@
-#[[ Cmake guard. ]]
+#[[ Cmake guard.
 if(TARGET SuiteSparseExternalProject)
     return()
 endif()
@@ -21,17 +21,13 @@ externalproject_add(SuiteSparseExternalProject
                     CONFIGURE_COMMAND ""
 
                     BUILD_COMMAND
-                    LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{LD_LIBRARY_PATH}
-                    PATH=${CMAKE_INSTALL_PREFIX}/bin:$ENV{PATH}
                     JOBS=${NUM_PROCESSORS}
                     make
-                    LAPACK=/home/ajakhotia/opt/robotFarm/lib/liblapack.a
-                    BLAS=/home/ajakhotia/opt/robotFarm/lib/libf77blas.a
+                    LAPACK=${CMAKE_INSTALL_PREFIX}/lib/liblapack.a
+                    BLAS=${CMAKE_INSTALL_PREFIX}/lib/libcblas.a
                     config library
 
                     BUILD_IN_SOURCE ON
+                    INSTALL_COMMAND make INSTALL=${CMAKE_INSTALL_PREFIX} install)
 
-                    INSTALL_COMMAND
-                    make install INSTALL=${CMAKE_INSTALL_PREFIX})
-
-add_dependencies(SuiteSparseExternalProject AtlasExternalProject)
+add_dependencies(SuiteSparseExternalProject AtlasExternalProject) ]]

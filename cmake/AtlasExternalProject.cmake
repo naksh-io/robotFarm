@@ -1,4 +1,4 @@
-#[[ Cmake guard. ]]
+#[[ Cmake guard.
 if(TARGET AtlasExternalProject)
     return()
 endif()
@@ -42,4 +42,4 @@ externalproject_add(AtlasExternalProject
                     COMMAND make ptcheck
                     COMMAND make time)
 
-add_dependencies(AtlasExternalProject LapackExternalProject)
+add_dependencies(AtlasExternalProject LapackExternalProject) ]]
