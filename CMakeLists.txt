@@ -56,3 +56,8 @@ option(ROBOT_FARM_BUILD_CERES_SOLVER "Build Ceres Solver" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_CERES_SOLVER)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CeresSolverExternalProject.cmake)
 endif ()
+
+option(ROBOT_FARM_BUILD_OPENCV "Build OpenCV" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OPENCV)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OpenCVExternalProject.cmake)
+endif ()
