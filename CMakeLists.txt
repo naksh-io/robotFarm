@@ -61,3 +61,8 @@ option(ROBOT_FARM_BUILD_OPENCV "Build OpenCV" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OPENCV)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OpenCVExternalProject.cmake)
 endif ()
+
+option(ROBOT_FARM_BUILD_FLAT_BUFFERS "Build Flat Buffers" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_FLAT_BUFFERS)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/FlatBuffersExternalProject.cmake)
+endif ()
