@@ -57,6 +57,11 @@ if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_CERES_SOLVER)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CeresSolverExternalProject.cmake)
 endif ()
 
+option(ROBOT_FARM_BUILD_PROTOBUF "Build Protobuf" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_PROTOBUF)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/ProtobufExternalProject.cmake)
+endif ()
+
 option(ROBOT_FARM_BUILD_OPENCV "Build OpenCV" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OPENCV)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OpenCVExternalProject.cmake)

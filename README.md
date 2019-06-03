@@ -43,6 +43,9 @@ This project is primarily a cmake based system to build libraries from source th
 * libatlas-base-dev
 * libsuitesparse-dev
 
+## Protocol Buffers dependency
+* curl
+
 ## OpenCV dependencies:
 * liblapacke-dev
 * libgtk-3-dev
@@ -60,4 +63,3 @@ This project is primarily a cmake based system to build libraries from source th
 * libhdf5-dev
 
 ## Upcoming:
-* protobuf

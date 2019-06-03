@@ -6,6 +6,11 @@ endif()
 include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/VTKExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/Python3ExternalProject.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/Eigen3ExternalProject.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/ProtobufExternalProject.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/GFlagsExternalProject.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/GlogExternalProject.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/CeresSolverExternalProject.cmake)
 
 find_package(CUDA)
 
@@ -69,6 +74,7 @@ add_dependencies(OpenCVExternalProject
                  VTKExternalProject
                  Python3ExternalProject
                  Eigen3ExternalProject
+                 ProtobufExternalProject
                  GFlagsExternalProject
                  GlogExternalProject
                  CeresSolverExternalProject)
