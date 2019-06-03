@@ -66,3 +66,8 @@ option(ROBOT_FARM_BUILD_FLAT_BUFFERS "Build Flat Buffers" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_FLAT_BUFFERS)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/FlatBuffersExternalProject.cmake)
 endif ()
+
+option(ROBOT_FARM_BUILD_CEREAL "Build Cereal" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_CEREAL)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CerealExternalProject.cmake)
+endif ()

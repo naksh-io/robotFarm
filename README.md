@@ -60,6 +60,4 @@ This project is primarily a cmake based system to build libraries from source th
 * libhdf5-dev
 
 ## Upcoming:
-* flatbuffers
 * protobuf
-* cereal
