@@ -12,7 +12,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/GFlagsExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/GlogExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/CeresSolverExternalProject.cmake)
 
-find_package(CUDA)
+find_package(CUDA QUIET)
 
 option(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB
        "Build OpenCV with non-free contrib modules. Please be sure to comply with the licensing"

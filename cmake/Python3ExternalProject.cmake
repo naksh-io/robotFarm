@@ -16,18 +16,20 @@ externalproject_add(Python3ExternalProject
                     DOWNLOAD_NO_PROGRESS ON
 
                     CONFIGURE_COMMAND <SOURCE_DIR>/configure
-                    --silent
                     --prefix=${CMAKE_INSTALL_PREFIX}
                     --enable-shared
                     --enable-optimizations
                     --enable-loadable-sqlite-extensions
-                    --enable-ipv6
+                    --disable-ipv6
+                    --enable-big-digits=30
                     --with-lto
-                    --with-address-sanitizer
                     --with-system-expat
                     --with-system-ffi
                     --with-system-libmpdec
                     --with-signal-module
                     --with-threads
+                    --with-pymalloc
                     --with-fpectl
-                    --without-pymalloc)
+                    --with-computed-gotos
+                    --with-ensurepip=upgrade
+                    )
