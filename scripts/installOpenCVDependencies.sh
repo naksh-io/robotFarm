@@ -14,4 +14,6 @@ apt install -y \
     libpng-dev \
     libjpeg-dev \
     libtiff-dev \
-    libhdf5-dev
+    libhdf5-dev \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev
