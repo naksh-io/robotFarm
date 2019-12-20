@@ -12,7 +12,7 @@ if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_GOOGLE_TEST)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GoogleTestExternalProject.cmake)
 endif ()
 
-option(ROBOT_FARM_BUILD_PYTHON3 "Build Pyhton3" OFF)
+option(ROBOT_FARM_BUILD_PYTHON3 "Build Python3" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_PYTHON3)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Python3ExternalProject.cmake)
 endif ()
