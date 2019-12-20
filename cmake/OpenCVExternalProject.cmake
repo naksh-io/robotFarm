@@ -50,8 +50,8 @@ if(CUDA_FOUND AND ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB)
          -DWITH_CUBLAS:BOOL=ON
          -DCUDA_FAST_MATH=1
          -DWITH_NVCUVID:BOOL=ON
-
-         )
+         -DBUILD_opencv_cudacodec:BOOL=OFF
+         -DBUILD_opencv_world:BOOL=OFF)
 else()
     list(APPEND ROBOT_FARM_OPENCV_CMAKE_ARGS
          -DWITH_CUDA:BOOL=OFF
