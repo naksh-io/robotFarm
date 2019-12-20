@@ -43,10 +43,10 @@ RUN cmake                                                       \
     -DCMAKE_INSTALL_PREFIX:PATH=${INSTALL_PREFIX}               \
     -DROBOT_FARM_BUILD_ALL:BOOL=ON                              \
     -DROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB:BOOL=OFF          \
-    ../robotFarm >> /buildLog.txt 2>&1
+    ../robotFarm 2>&1 | tee -a /buildLog.txt
 
 # Build.
-RUN make -j`nproc` >> /buildLog.txt 2>&1
+RUN make -j`nproc` 2>&1 | tee -a /buildLog.txt
 
 # Switch the work directory back to /.
 WORKDIR /
