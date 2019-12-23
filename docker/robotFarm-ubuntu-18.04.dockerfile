@@ -46,7 +46,7 @@ RUN cmake                                                       \
     ../robotFarm 2>&1 | tee -a /buildLog.txt
 
 # Build.
-RUN make -j1 2>&1 | tee -a /buildLog.txt
+RUN make -j`nproc` 2>&1 | tee -a /buildLog.txt
 
 # Switch the work directory back to /.
 WORKDIR /
