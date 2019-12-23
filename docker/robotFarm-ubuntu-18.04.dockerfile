@@ -6,32 +6,32 @@ ARG INSTALL_PREFIX=/opt/robotFarm
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update package list and upgrade.
-RUN apt update >> /buildLog.txt 2>&1
-RUN apt upgrade -y >> /buildLog.txt 2>&1
+RUN apt update 2>&1 | tee -a /buildLog.txt
+RUN apt upgrade -y 2>&1 | tee -a /buildLog.txt
 
 # Copy over the code from the context.
 COPY . /tmp/robotFarm
 
 # Run the scripts to install all system dependencies.
 WORKDIR /tmp/robotFarm/scripts
-RUN sh installBuildTools.sh >> /buildLog.txt 2>&1
-RUN sh installPython3Dependencies.sh  >> /buildLog.txt 2>&1
-RUN sh installVTKDependencies.sh  >> /buildLog.txt 2>&1
-RUN sh installAtlasDependencies.sh  >> /buildLog.txt 2>&1
-RUN sh installSuiteSparseDependencies.sh  >> /buildLog.txt 2>&1
-RUN sh installCeresDependencies.sh  >> /buildLog.txt 2>&1
-RUN sh installProtobufDependencies.sh  >> /buildLog.txt 2>&1
-RUN sh installOpenCVDependencies.sh  >> /buildLog.txt 2>&1
+RUN sh installBuildTools.sh 2>&1 | tee -a /buildLog.txt
+RUN sh installPython3Dependencies.sh 2>&1 | tee -a /buildLog.txt
+RUN sh installVTKDependencies.sh 2>&1 | tee -a /buildLog.txt
+RUN sh installAtlasDependencies.sh 2>&1 | tee -a /buildLog.txt
+RUN sh installSuiteSparseDependencies.sh 2>&1 | tee -a /buildLog.txt
+RUN sh installCeresDependencies.sh 2>&1 | tee -a /buildLog.txt
+RUN sh installProtobufDependencies.sh 2>&1 | tee -a /buildLog.txt
+RUN sh installOpenCVDependencies.sh 2>&1 | tee -a /buildLog.txt
 
 # Clean-up.
-RUN apt install --fix-missing >> /buildLog.txt 2>&1
-RUN apt autoremove -y >> /buildLog.txt 2>&1
-RUN apt autoclean -y >> /buildLog.txt 2>&1
+RUN apt install --fix-missing 2>&1 | tee -a /buildLog.txt
+RUN apt autoremove -y 2>&1 | tee -a /buildLog.txt
+RUN apt autoclean -y 2>&1 | tee -a /buildLog.txt
 
 # Set PATH and LD_LIBRARY_PATH so that the successive steps of the build can
 # execute binaries built in the preceding steps of the build.
-ENV PATH = ${INSTALL_PREFIX}/bin:${PATH}
-ENV LD_LIBRARY_PATH = ${INSTALL_PREFIX}/lib:${LD_LIBRARY_PATH}
+ENV PATH=${INSTALL_PREFIX}/bin:${PATH}
+ENV LD_LIBRARY_PATH=${INSTALL_PREFIX}/lib:${LD_LIBRARY_PATH}
 
 # Create a build directory
 RUN mkdir -p /tmp/robotFarm-build
@@ -46,7 +46,7 @@ RUN cmake                                                       \
     ../robotFarm 2>&1 | tee -a /buildLog.txt
 
 # Build.
-RUN make -j`nproc` 2>&1 | tee -a /buildLog.txt
+RUN make -j1 2>&1 | tee -a /buildLog.txt
 
 # Switch the work directory back to /.
 WORKDIR /
