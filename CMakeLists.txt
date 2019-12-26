@@ -76,3 +76,8 @@ option(ROBOT_FARM_BUILD_CEREAL "Build Cereal" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_CEREAL)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CerealExternalProject.cmake)
 endif ()
+
+option(ROBOT_FARM_BUILD_NLOHMANN_JSON "Build nlohmann's json" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_NLOHMANN_JSON)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/NlohmannJsonExternalProject.cmake)
+endif ()
