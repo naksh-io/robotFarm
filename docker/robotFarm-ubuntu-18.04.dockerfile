@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
 ARG INSTALL_PREFIX=/opt/robotFarm
+ARG SKIP_PYTHON3=ON
 
 # Set dpkg to run in non-interactive mode.
 ENV DEBIAN_FRONTEND=noninteractive
@@ -16,6 +17,7 @@ COPY . /tmp/robotFarm
 WORKDIR /tmp/robotFarm/scripts
 RUN sh installBuildTools.sh 2>&1 | tee -a /buildLog.txt
 RUN sh installPython3Dependencies.sh 2>&1 | tee -a /buildLog.txt
+RUN if [ "${SKIP_PYTHON3}" = "ON" ] ; then sh installBoostDependencies.sh 2>&1 | tee -a /buildLog.txt ; fi
 RUN sh installVTKDependencies.sh 2>&1 | tee -a /buildLog.txt
 RUN sh installAtlasDependencies.sh 2>&1 | tee -a /buildLog.txt
 RUN sh installSuiteSparseDependencies.sh 2>&1 | tee -a /buildLog.txt
@@ -42,6 +44,7 @@ RUN cmake                                                       \
     -DCMAKE_BUILD_TYPE:STRING=Release                           \
     -DCMAKE_INSTALL_PREFIX:PATH=${INSTALL_PREFIX}               \
     -DROBOT_FARM_BUILD_ALL:BOOL=ON                              \
+    -DROBOT_FARM_SKIP_PYTHON3:BOOL=${SKIP_PYTHON3}              \
     -DROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB:BOOL=OFF          \
     ../robotFarm 2>&1 | tee -a /buildLog.txt
 

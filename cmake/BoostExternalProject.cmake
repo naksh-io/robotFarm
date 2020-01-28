@@ -20,7 +20,9 @@ externalproject_add(BoostExternalProject
                     LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{LD_LIBRARY_PATH}
                     PATH=${CMAKE_INSTALL_PREFIX}/bin:$ENV{PATH}
                     <SOURCE_DIR>/bootstrap.sh
-                    --prefix=${CMAKE_INSTALL_PREFIX} --with-python-root=${CMAKE_INSTALL_PREFIX}
+                        --prefix=${CMAKE_INSTALL_PREFIX}
+                        --with-python-root=${CMAKE_INSTALL_PREFIX}
+                        --with-python=python3
 
                     BUILD_COMMAND <SOURCE_DIR>/b2 install
                     BUILD_IN_SOURCE ON
