@@ -88,3 +88,7 @@ if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_CAPNPROTO)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CapnprotoExternalProject.cmake)
 endif ()
 
+option(ROBOT_FARM_BUILD_OATPP "Build oatpp" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OATPP)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OatppExternalProject.cmake)
+endif ()
