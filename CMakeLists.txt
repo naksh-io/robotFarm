@@ -97,3 +97,5 @@ option(ROBOT_FARM_BUILD_OGRE "Build OGRE" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OGRE)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OgreExternalProject.cmake)
 endif ()
+
+add_subdirectory(docker)
