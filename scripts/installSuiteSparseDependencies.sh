@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt install -y m4
+apt-get install -y m4

@@ -11,6 +11,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/ProtobufExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/GFlagsExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/GlogExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/CeresSolverExternalProject.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/OgreExternalProject.cmake)
 
 find_package(CUDA QUIET)
 
@@ -99,4 +100,5 @@ add_dependencies(OpenCVExternalProject
                  ProtobufExternalProject
                  GFlagsExternalProject
                  GlogExternalProject
-                 CeresSolverExternalProject)
+                 CeresSolverExternalProject
+                 OgreExternalProject)

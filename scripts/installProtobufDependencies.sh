@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt install -y curl
+apt-get install -y curl

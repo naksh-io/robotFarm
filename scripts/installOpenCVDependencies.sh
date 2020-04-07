@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt install -y \
+apt-get install -y \
     liblapacke-dev \
     libgtk-3-dev \
     ffmpeg \

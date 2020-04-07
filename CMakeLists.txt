@@ -92,3 +92,8 @@ option(ROBOT_FARM_BUILD_OATPP "Build oatpp" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OATPP)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OatppExternalProject.cmake)
 endif ()
+
+option(ROBOT_FARM_BUILD_OGRE "Build OGRE" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OGRE)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OgreExternalProject.cmake)
+endif ()
