@@ -6,9 +6,17 @@ ARG SKIP_PYTHON3=ON
 # Set dpkg to run in non-interactive mode.
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Set shell to return failure code if any command in the pipe fails.
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN echo $'Acquire::http::Pipeline-Depth 0;\n\
+    Acquire::http::No-Cache true;\n\
+    Acquire::BrokenProxy    true;\n'\
+    >> /etc/apt/apt.conf.d/90fix-hashsum-mismatch
+
 # Update package list and upgrade.
-RUN apt update 2>&1 | tee -a /buildLog.txt
-RUN apt upgrade -y 2>&1 | tee -a /buildLog.txt
+RUN apt-get update 2>&1 | tee -a /buildLog.txt
+RUN apt-get upgrade -y 2>&1 | tee -a /buildLog.txt
 
 # Copy over the code from the context.
 COPY . /tmp/robotFarm
@@ -23,12 +31,13 @@ RUN sh installAtlasDependencies.sh 2>&1 | tee -a /buildLog.txt
 RUN sh installSuiteSparseDependencies.sh 2>&1 | tee -a /buildLog.txt
 RUN sh installCeresDependencies.sh 2>&1 | tee -a /buildLog.txt
 RUN sh installProtobufDependencies.sh 2>&1 | tee -a /buildLog.txt
+RUN sh installOgreDependencies.sh 2>&1 | tee -a /buildLog.txt
 RUN sh installOpenCVDependencies.sh 2>&1 | tee -a /buildLog.txt
 
 # Clean-up.
-RUN apt install --fix-missing 2>&1 | tee -a /buildLog.txt
-RUN apt autoremove -y 2>&1 | tee -a /buildLog.txt
-RUN apt autoclean -y 2>&1 | tee -a /buildLog.txt
+RUN apt-get install --fix-missing 2>&1 | tee -a /buildLog.txt
+RUN apt-get autoremove -y 2>&1 | tee -a /buildLog.txt
+RUN apt-get autoclean -y 2>&1 | tee -a /buildLog.txt
 
 # Set PATH and LD_LIBRARY_PATH so that the successive steps of the build can
 # execute binaries built in the preceding steps of the build.

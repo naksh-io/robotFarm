@@ -97,3 +97,10 @@ option(ROBOT_FARM_BUILD_OATPP_WEBSOCKET "Build oatpp websocket" OFF)
 if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OATPP_WEBSOCKET)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OatppWebSocketExternalProject.cmake)
 endif ()
+
+option(ROBOT_FARM_BUILD_OGRE "Build OGRE" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OGRE)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OgreExternalProject.cmake)
+endif ()
+
+add_subdirectory(docker)

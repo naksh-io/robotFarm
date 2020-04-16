@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt install -y \
+apt-get install -y \
     libssl-dev \
     zlib1g-dev \
     libncurses5-dev \

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt install -y libatlas-base-dev libsuitesparse-dev
+apt-get install -y libatlas-base-dev libsuitesparse-dev

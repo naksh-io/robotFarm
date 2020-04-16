@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt install -y libgl1-mesa-dev libxt-dev
+apt-get install -y libgl1-mesa-dev libxt-dev

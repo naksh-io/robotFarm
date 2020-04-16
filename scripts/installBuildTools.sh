@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt install -y build-essential cmake
+apt-get install -y build-essential cmake

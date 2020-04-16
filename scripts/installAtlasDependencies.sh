@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt install -y gfortran
+apt-get install -y gfortran
