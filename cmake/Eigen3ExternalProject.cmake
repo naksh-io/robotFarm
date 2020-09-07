@@ -7,7 +7,7 @@ include(ExternalProject)
 # TODO: Add lapack, blas and suitesparse dependency.
 
 set(ROBOT_FARM_EIGEN3_URL
-    "http://bitbucket.org/eigen/eigen/get/3.3.7.zip"
+    "https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip"
     CACHE STRING
     "URL of the Eigen3 source archive")
 
