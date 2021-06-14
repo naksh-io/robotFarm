@@ -103,4 +103,9 @@ if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_OGRE)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OgreExternalProject.cmake)
 endif ()
 
+option(ROBOT_FARM_BUILD_SPDLOG "Build SpdLog" OFF)
+if (ROBOT_FARM_BUILD_ALL OR ROBOT_FARM_BUILD_SPDLOG)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SpdLogExternalProject.cmake)
+endif ()
+
 add_subdirectory(docker)
