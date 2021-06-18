@@ -14,7 +14,8 @@ externalproject_add(CapnprotoExternalProject
                     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/capnproto
                     URL ${ROBOT_FARM_CAPNPROTO_URL}
                     DOWNLOAD_NO_PROGRESS ON
-                    CONFIGURE_COMMAND
-                        <SOURCE_DIR>/configure
-                            --prefix=${CMAKE_INSTALL_PREFIX}
-                            --with-sysroot=${CMAKE_INSTALL_PREFIX})
+                    CMAKE_ARGS
+                        -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
+                        -DCMAKE_PREFIX_PATH:PATH=${CMAKE_INSTALL_PREFIX}
+                        -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
+                        -DBUILD_SHARED_LIBS:BOOL=ON)
