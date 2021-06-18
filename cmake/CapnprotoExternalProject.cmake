@@ -6,7 +6,7 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_CAPNPROTO_URL
-    "https://capnproto.org/capnproto-c++-0.7.0.tar.gz"
+    "https://github.com/capnproto/capnproto/archive/refs/tags/v0.8.0.tar.gz"
     CACHE STRING
     "URL of the Cap'n'proto source archive")
 
