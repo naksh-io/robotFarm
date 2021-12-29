@@ -17,4 +17,5 @@ externalproject_add(SpdLogExternalProject
                     CMAKE_ARGS
                     -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
                     -DCMAKE_PREFIX_PATH:PATH=${CMAKE_INSTALL_PREFIX}
-                    -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX})
+                    -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
+                    -DSPDLOG_BUILD_SHARED:BOOL=ON)
