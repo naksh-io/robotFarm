@@ -6,7 +6,7 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_NLOHMANN_JSON_URL
-    "https://github.com/nlohmann/json/archive/v3.7.3.zip"
+    "https://github.com/nlohmann/json/archive/refs/tags/v3.10.4.zip"
     CACHE STRING
     "URL of the nlohmann's json source archive")
 

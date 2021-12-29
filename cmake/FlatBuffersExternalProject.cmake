@@ -6,7 +6,7 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_FLAT_BUFFERS_URL
-    "https://github.com/google/flatbuffers/archive/v1.11.0.zip"
+    "https://github.com/google/flatbuffers/archive/refs/tags/v2.0.0.zip"
     CACHE STRING
     "URL of the Flat Buffers source archive")
 

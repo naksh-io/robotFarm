@@ -6,7 +6,7 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_VTK_URL
-    "https://gitlab.kitware.com/vtk/vtk/-/archive/v8.2.0/vtk-v8.2.0.zip"
+    "https://gitlab.kitware.com/vtk/vtk/-/archive/v9.1.0/vtk-v9.1.0.zip"
     CACHE STRING
     "URL of the VTK source archive")
 

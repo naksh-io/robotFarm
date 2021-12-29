@@ -9,7 +9,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/BoostExternalProject.cmake)
 
 
 set(ROBOT_FARM_EIGEN3_URL
-    "https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip"
+    "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip"
     CACHE STRING
     "URL of the Eigen3 source archive")
 
