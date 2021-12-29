@@ -6,7 +6,7 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_PYTHON3_URL
-    "https://github.com/python/cpython/archive/v3.5.7.zip"
+    "https://github.com/python/cpython/archive/refs/tags/v3.10.1.tar.gz"
     CACHE STRING
     "URL of the Python3 source archive")
 

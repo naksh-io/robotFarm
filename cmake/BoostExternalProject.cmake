@@ -7,7 +7,7 @@ include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/Python3ExternalProject.cmake)
 
 set(ROBOT_FARM_BOOST_URL
-    "https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz"
+    "https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz"
     CACHE STRING
     "URL of the Boost source archive")
 

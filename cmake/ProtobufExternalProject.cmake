@@ -6,7 +6,7 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_PROTOBUF_URL
-    "https://github.com/protocolbuffers/protobuf/releases/download/v3.8.0/protobuf-all-3.8.0.zip"
+    "https://github.com/protocolbuffers/protobuf/releases/download/v3.19.1/protobuf-all-3.19.1.tar.gz"
     CACHE STRING
     "URL of the Protocol Buffers source archive")
 

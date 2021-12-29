@@ -6,7 +6,7 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_OATPP_URL
-        "https://github.com/oatpp/oatpp/archive/1.0.0.zip"
+        "https://github.com/oatpp/oatpp/archive/refs/tags/1.3.0.tar.gz"
         CACHE STRING
         "URL of the oatpp source archive")
 

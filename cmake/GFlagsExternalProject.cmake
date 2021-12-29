@@ -6,7 +6,7 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_GFLAGS_URL
-    "https://github.com/gflags/gflags/archive/v2.2.2.zip"
+    "https://github.com/gflags/gflags/archive/refs/tags/v2.2.2.tar.gz"
     CACHE STRING
     "URL of the Google Flags source archive")
 

@@ -7,7 +7,7 @@ include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/BoostExternalProject.cmake)
 
 set(ROBOT_FARM_OGRE_URL
-        "https://github.com/OGRECave/ogre/archive/v1.12.5.zip"
+        "https://github.com/OGRECave/ogre/archive/refs/tags/v13.2.4.tar.gz"
         CACHE STRING
         "URL of the OGRE source archive")
 

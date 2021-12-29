@@ -7,7 +7,7 @@ include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/GFlagsExternalProject.cmake)
 
 set(ROBOT_FARM_GLOG_URL
-    "https://github.com/google/glog/archive/v0.4.0.zip"
+    "https://github.com/google/glog/archive/refs/tags/v0.5.0.tar.gz"
     CACHE STRING
     "URL of the Google Log source archive")
 
