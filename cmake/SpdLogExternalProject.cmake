@@ -14,8 +14,5 @@ externalproject_add(SpdLogExternalProject
                     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/spdlog
                     URL ${ROBOT_FARM_SPDLOG_URL}
                     DOWNLOAD_NO_PROGRESS ON
-                    CMAKE_ARGS
-                    -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
-                    -DCMAKE_PREFIX_PATH:PATH=${CMAKE_INSTALL_PREFIX}
-                    -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
-                    -DSPDLOG_BUILD_SHARED:BOOL=ON)
+                    CMAKE_ARGS ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
+                    -DSPDLOG_BUILD_SHARED:BOOL=${BUILD_SHARED_LIBS})
