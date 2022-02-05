@@ -39,11 +39,6 @@ RUN apt-get install --fix-missing 2>&1 | tee -a /buildLog.txt
 RUN apt-get autoremove -y 2>&1 | tee -a /buildLog.txt
 RUN apt-get autoclean -y 2>&1 | tee -a /buildLog.txt
 
-# Set PATH and LD_LIBRARY_PATH so that the successive steps of the build can
-# execute binaries built in the preceding steps of the build.
-ENV PATH=${INSTALL_PREFIX}/bin:${PATH}
-ENV LD_LIBRARY_PATH=${INSTALL_PREFIX}/lib:${LD_LIBRARY_PATH}
-
 # Create a build directory
 RUN mkdir -p /tmp/robotFarm-build
 WORKDIR /tmp/robotFarm-build
@@ -52,7 +47,6 @@ WORKDIR /tmp/robotFarm-build
 RUN cmake                                                       \
     -DCMAKE_BUILD_TYPE:STRING=Release                           \
     -DCMAKE_INSTALL_PREFIX:PATH=${INSTALL_PREFIX}               \
-    -DROBOT_FARM_BUILD_ALL:BOOL=ON                              \
     -DROBOT_FARM_SKIP_PYTHON3:BOOL=${SKIP_PYTHON3}              \
     -DROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB:BOOL=OFF          \
     ../robotFarm 2>&1 | tee -a /buildLog.txt
