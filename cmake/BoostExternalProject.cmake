@@ -7,29 +7,45 @@ include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/Python3ExternalProject.cmake)
 
 set(ROBOT_FARM_BOOST_URL
-    "https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz"
-    CACHE STRING
-    "URL of the Boost source archive")
+        "https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz"
+        CACHE STRING
+        "URL of the Boost source archive")
 
 # See: https://www.boost.org/doc/libs/1_78_0/more/getting_started/unix-variants.html#identify-your-toolset
 set(ROBOT_FARM_BOOST_TOOLSET gcc CACHE STRING "Toolset name to use for building boost[Default: gcc]")
 
+set(BOOST_LINK_TYPE static)
+if(BUILD_SHARED_LIBS)
+    set(BOOST_LINK_TYPE shared)
+endif()
+
+string(TOLOWER ${CMAKE_BUILD_TYPE} BOOST_VARIANT_TYPE)
+
 externalproject_add(BoostExternalProject
-                    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/boost
-                    URL ${ROBOT_FARM_BOOST_URL}
-                    DOWNLOAD_NO_PROGRESS ON
+        PREFIX ${CMAKE_CURRENT_BINARY_DIR}/boost
+        URL ${ROBOT_FARM_BOOST_URL}
+        DOWNLOAD_NO_PROGRESS ON
 
-                    CONFIGURE_COMMAND
-                    LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{LD_LIBRARY_PATH}
-                    PATH=${CMAKE_INSTALL_PREFIX}/bin:$ENV{PATH}
-                    <SOURCE_DIR>/bootstrap.sh
-                        --with-toolset=${ROBOT_FARM_BOOST_TOOLSET}
-                        --prefix=${CMAKE_INSTALL_PREFIX}
-                        --with-python-root=${CMAKE_INSTALL_PREFIX}
-                        --with-python=python3
+        CONFIGURE_COMMAND
+            LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{LD_LIBRARY_PATH}
+            PATH=${CMAKE_INSTALL_PREFIX}/bin:$ENV{PATH}
+            <SOURCE_DIR>/bootstrap.sh
+            --prefix=${CMAKE_INSTALL_PREFIX}
+            --with-libraries=all
+            --with-python-root=${CMAKE_INSTALL_PREFIX}
+            --with-python=python3
+            --with-toolset=${ROBOT_FARM_BOOST_TOOLSET}
 
-                    BUILD_COMMAND <SOURCE_DIR>/b2 install
-                    BUILD_IN_SOURCE ON
-                    INSTALL_COMMAND "")
+        BUILD_COMMAND <SOURCE_DIR>/b2
+            --build-type=complete
+            --layout=versioned
+            install
+            link=${BOOST_LINK_TYPE}
+            runtime-link=${BOOST_LINK_TYPE}
+            threading=multi
+            variant=${BOOST_VARIANT_TYPE}
+
+        BUILD_IN_SOURCE ON
+        INSTALL_COMMAND "")
 
 add_dependencies(BoostExternalProject Python3ExternalProject)
