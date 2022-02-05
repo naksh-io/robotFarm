@@ -38,7 +38,7 @@ externalproject_add(BoostExternalProject
 
         BUILD_COMMAND <SOURCE_DIR>/b2
             --build-type=complete
-            --layout=versioned
+            --layout=tagged
             install
             link=${BOOST_LINK_TYPE}
             runtime-link=${BOOST_LINK_TYPE}
