@@ -19,4 +19,5 @@ externalproject_add(OgreExternalProject
         -DOGRE_BUILD_COMPONENT_OVERLAY_IMGUI:BOOL=OFF
         -DOGRE_BUILD_DEPENDENCIES:BOOL=OFF)
 
-add_dependencies(OgreExternalProject BoostExternalProject)
+add_dependencies(OgreExternalProject
+        BoostExternalProject)

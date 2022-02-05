@@ -17,4 +17,5 @@ externalproject_add(OatppWebsocketExternalProject
         DOWNLOAD_NO_PROGRESS ON
         CMAKE_ARGS ${ROBOT_FARM_FORWARDED_CMAKE_ARGS})
 
-add_dependencies(OatppWebsocketExternalProject OatppExternalProject)
+add_dependencies(OatppWebsocketExternalProject
+        OatppExternalProject)
