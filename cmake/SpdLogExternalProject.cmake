@@ -6,13 +6,14 @@ endif()
 include(ExternalProject)
 
 set(ROBOT_FARM_SPDLOG_URL
-    "https://github.com/gabime/spdlog/archive/refs/tags/v1.9.2.tar.gz"
-    CACHE STRING
-    "URL of the spdlog source archive")
+        "https://github.com/gabime/spdlog/archive/refs/tags/v1.9.2.tar.gz"
+        CACHE STRING
+        "URL of the spdlog source archive")
 
 externalproject_add(SpdLogExternalProject
-                    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/spdlog
-                    URL ${ROBOT_FARM_SPDLOG_URL}
-                    DOWNLOAD_NO_PROGRESS ON
-                    CMAKE_ARGS ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
-                    -DSPDLOG_BUILD_SHARED:BOOL=${BUILD_SHARED_LIBS})
+        PREFIX ${CMAKE_CURRENT_BINARY_DIR}/spdlog
+        URL ${ROBOT_FARM_SPDLOG_URL}
+        DOWNLOAD_NO_PROGRESS ON
+        CMAKE_ARGS
+            ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
+            -DSPDLOG_BUILD_SHARED:BOOL=${BUILD_SHARED_LIBS})
