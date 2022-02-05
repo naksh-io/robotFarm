@@ -11,6 +11,9 @@ set(ROBOT_FARM_BOOST_URL
     CACHE STRING
     "URL of the Boost source archive")
 
+# See: https://www.boost.org/doc/libs/1_78_0/more/getting_started/unix-variants.html#identify-your-toolset
+set(ROBOT_FARM_BOOST_TOOLSET gcc CACHE STRING "Toolset name to use for building boost[Default: gcc]")
+
 externalproject_add(BoostExternalProject
                     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/boost
                     URL ${ROBOT_FARM_BOOST_URL}
@@ -20,6 +23,7 @@ externalproject_add(BoostExternalProject
                     LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{LD_LIBRARY_PATH}
                     PATH=${CMAKE_INSTALL_PREFIX}/bin:$ENV{PATH}
                     <SOURCE_DIR>/bootstrap.sh
+                        --with-toolset=${ROBOT_FARM_BOOST_TOOLSET}
                         --prefix=${CMAKE_INSTALL_PREFIX}
                         --with-python-root=${CMAKE_INSTALL_PREFIX}
                         --with-python=python3
