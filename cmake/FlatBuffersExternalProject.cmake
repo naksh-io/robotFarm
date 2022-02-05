@@ -14,8 +14,5 @@ externalproject_add(FlatBuffersExternalProject
                     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/flatbuffers
                     URL ${ROBOT_FARM_FLAT_BUFFERS_URL}
                     DOWNLOAD_NO_PROGRESS ON
-                    CMAKE_ARGS
-                    -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
-                    -DCMAKE_PREFIX_PATH:PATH=${CMAKE_INSTALL_PREFIX}
-                    -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
-                    -DFLATBUFFERS_BUILD_SHAREDLIB:BOOL=ON)
+                    CMAKE_ARGS ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
+                    -DFLATBUFFERS_BUILD_SHAREDLIB:BOOL=${BUILD_SHARED_LIBS})
