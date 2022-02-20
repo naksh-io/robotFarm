@@ -5,15 +5,21 @@ endif()
 
 include(ExternalProject)
 
-set(ROBOT_FARM_SPDLOG_URL
+option(ROBOT_FARM_SKIP_SPDLOG "Skip spdlog" OFF)
+
+if(ROBOT_FARM_SKIP_SPDLOG)
+    add_custom_target(SpdLogExternalProject)
+else()
+    set(ROBOT_FARM_SPDLOG_URL
         "https://github.com/gabime/spdlog/archive/refs/tags/v1.9.2.tar.gz"
         CACHE STRING
         "URL of the spdlog source archive")
 
-externalproject_add(SpdLogExternalProject
+    externalproject_add(SpdLogExternalProject
         PREFIX ${CMAKE_CURRENT_BINARY_DIR}/spdlog
         URL ${ROBOT_FARM_SPDLOG_URL}
         DOWNLOAD_NO_PROGRESS ON
         CMAKE_ARGS
-            ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
-            -DSPDLOG_BUILD_SHARED:BOOL=${BUILD_SHARED_LIBS})
+        ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
+        -DSPDLOG_BUILD_SHARED:BOOL=${BUILD_SHARED_LIBS})
+endif()
