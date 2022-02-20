@@ -43,7 +43,7 @@ cmake \
     -DCMAKE_BUILD_TYPE:STRING="Release" \
     -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_TREE>
 ```
-* Alternatively, it's recommended to use `Ninja` as the generator instead of default for faster
+* Alternatively, it's recommended to use `Ninja` as the generator instead of the default for faster
   builds.
   ```shell
   cmake \
@@ -62,9 +62,9 @@ cmake \
     --target <target-name-1> <target-name-2> ... \
     --parallel <num-jobs>
 ```
-* The valid values that can be used for `<target-name-*>` in the above command are the 
-  names of the external project targets defined in the files under `cmake` directory. Here is 
-  a consolidated list of names:
+* The valid values that can be used for `<target-name-*>` tokens in the above command are the 
+  names of the external project targets defined in the files under `cmake` directory. Below is 
+  a consolidated list of the same names:
   * BoostExternalProject
   * CapnprotoExternalProject
   * CerealExternalProject
@@ -88,12 +88,13 @@ cmake \
   you from performing other tasks during the duration of the build. Plan accordingly.
 * Alternatively, you may build all libraries available via `robotFarm` by simply omitting the
   `--target` argument to the build command. CMake assumes to build all targets by default if
-  none are provided as arguments.
+  none are provided.
   ```shell
   cmake --build <BUILD_TREE> --parallel <num-jobs>
   ```
 
-## 4. Make Money !!
+## 4. Make Money
+Yup!! make money.
 
 
 # Notes:
