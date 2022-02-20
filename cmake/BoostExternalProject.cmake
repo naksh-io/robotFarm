@@ -24,7 +24,10 @@ else()
         set(BOOST_LINK_TYPE shared)
     endif()
 
-    string(TOLOWER ${CMAKE_BUILD_TYPE} BOOST_VARIANT_TYPE)
+    set(BOOST_VARIANT_TYPE release)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(BOOST_VARIANT_TYPE debug)
+    endif()
 
     externalproject_add(BoostExternalProject
         PREFIX ${CMAKE_CURRENT_BINARY_DIR}/boost
