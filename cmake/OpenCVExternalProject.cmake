@@ -13,23 +13,26 @@ include(${CMAKE_CURRENT_LIST_DIR}/GlogExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/CeresSolverExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/OgreExternalProject.cmake)
 
-find_package(CUDA QUIET)
+option(ROBOT_FARM_SKIP_OPENCV "Skip OpenCV" OFF)
 
-option(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB
+if(ROBOT_FARM_SKIP_OPENCV)
+    add_custom_target(OpenCVExternalProject)
+else()
+    option(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB
         "Build OpenCV with non-free contrib modules. Please be sure to comply with the licensing"
         OFF)
 
-set(ROBOT_FARM_OPENCV_CONTRIB_URL
+    set(ROBOT_FARM_OPENCV_CONTRIB_URL
         "https://github.com/opencv/opencv_contrib/archive/refs/tags/4.5.5.tar.gz"
         CACHE STRING
         "URL of the OpenCV contrib source archive")
 
-set(ROBOT_FARM_OPENCV_URL
+    set(ROBOT_FARM_OPENCV_URL
         "https://github.com/opencv/opencv/archive/refs/tags/4.5.5.tar.gz"
         CACHE STRING
         "URL of the OpenCV source archive")
 
-set(ROBOT_FARM_OPENCV_CMAKE_ARGS
+    set(ROBOT_FARM_OPENCV_CMAKE_ARGS
         ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
         -DWITH_TBB:BOOL=ON
         -DWITH_OPENMP:BOOL=ON
@@ -44,27 +47,34 @@ set(ROBOT_FARM_OPENCV_CMAKE_ARGS
         -DWITH_OPENCL:BOOL=ON
         -DENABLE_FAST_MATH=1)
 
-if(CUDA_FOUND AND ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB)
-    list(APPEND ROBOT_FARM_OPENCV_CMAKE_ARGS
+    find_package(CUDA QUIET)
+
+    if(CUDA_FOUND AND ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB)
+        list(APPEND ROBOT_FARM_OPENCV_CMAKE_ARGS
             -DWITH_CUDA:BOOL=ON
             -DWITH_CUBLAS:BOOL=ON
             -DCUDA_FAST_MATH=1
             -DWITH_NVCUVID:BOOL=ON
             -DBUILD_opencv_cudacodec:BOOL=OFF
             -DBUILD_opencv_world:BOOL=OFF)
-else()
-    list(APPEND ROBOT_FARM_OPENCV_CMAKE_ARGS
+    else()
+        list(APPEND ROBOT_FARM_OPENCV_CMAKE_ARGS
             -DWITH_CUDA:BOOL=OFF
             -DWITH_CUBLAS:BOOL=OFF
             -DCUDA_FAST_MATH=0
             -DWITH_NVCUVID:BOOL=OFF
             -DBUILD_opencv_cudacodec:BOOL=OFF
             -DBUILD_opencv_world:BOOL=OFF)
-endif()
+    endif()
 
-if(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB)
+    externalproject_add(OpenCVExternalProject
+        PREFIX ${CMAKE_CURRENT_BINARY_DIR}/opencv
+        URL ${ROBOT_FARM_OPENCV_URL}
+        DOWNLOAD_NO_PROGRESS ON
+        CMAKE_ARGS ${ROBOT_FARM_OPENCV_CMAKE_ARGS})
 
-    externalproject_add(OpenCVContribExternalProject
+    if(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB)
+        externalproject_add(OpenCVContribExternalProject
             PREFIX ${CMAKE_CURRENT_BINARY_DIR}/opencv-contrib
             URL ${ROBOT_FARM_OPENCV_CONTRIB_URL}
             DOWNLOAD_NO_PROGRESS ON
@@ -72,31 +82,22 @@ if(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB)
             BUILD_COMMAND ""
             INSTALL_COMMAND "")
 
-    externalproject_get_property(OpenCVContribExternalProject SOURCE_DIR)
+        externalproject_get_property(OpenCVContribExternalProject SOURCE_DIR)
 
-    list(APPEND ROBOT_FARM_OPENCV_CMAKE_ARGS
+        list(APPEND ROBOT_FARM_OPENCV_CMAKE_ARGS
             -DOPENCV_ENABLE_NONFREE:BOOL=ON
             -DOPENCV_EXTRA_MODULES_PATH:PATH=${SOURCE_DIR}/modules)
+
+        add_dependencies(OpenCVExternalProject OpenCVContribExternalProject)
+    endif()
 endif()
-
-externalproject_add(OpenCVExternalProject
-        PREFIX ${CMAKE_CURRENT_BINARY_DIR}/opencv
-        URL ${ROBOT_FARM_OPENCV_URL}
-        DOWNLOAD_NO_PROGRESS ON
-        CMAKE_ARGS ${ROBOT_FARM_OPENCV_CMAKE_ARGS})
-
-
-if(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB)
-    add_dependencies(OpenCVExternalProject OpenCVContribExternalProject)
-endif()
-
 
 add_dependencies(OpenCVExternalProject
-        VTKExternalProject
-        Python3ExternalProject
-        Eigen3ExternalProject
-        ProtobufExternalProject
-        GFlagsExternalProject
-        GlogExternalProject
-        CeresSolverExternalProject
-        OgreExternalProject)
+    VTKExternalProject
+    Python3ExternalProject
+    Eigen3ExternalProject
+    ProtobufExternalProject
+    GFlagsExternalProject
+    GlogExternalProject
+    CeresSolverExternalProject
+    OgreExternalProject)

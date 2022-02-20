@@ -5,36 +5,36 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_PYTHON3 "Skip building of Python3" ON)
+option(ROBOT_FARM_SKIP_PYTHON3 "Skip Python3" ON)
 
-set(ROBOT_FARM_PYTHON3_URL
+if(ROBOT_FARM_SKIP_PYTHON3)
+    add_custom_target(Python3ExternalProject)
+else()
+    set(ROBOT_FARM_PYTHON3_URL
         "https://github.com/python/cpython/archive/refs/tags/v3.10.1.tar.gz"
         CACHE STRING
         "URL of the Python3 source archive")
 
-if(NOT ROBOT_FARM_SKIP_PYTHON3)
     externalproject_add(Python3ExternalProject
-            PREFIX ${CMAKE_CURRENT_BINARY_DIR}/python3
-            URL ${ROBOT_FARM_PYTHON3_URL}
-            DOWNLOAD_NO_PROGRESS ON
+        PREFIX ${CMAKE_CURRENT_BINARY_DIR}/python3
+        URL ${ROBOT_FARM_PYTHON3_URL}
+        DOWNLOAD_NO_PROGRESS ON
 
-            CONFIGURE_COMMAND <SOURCE_DIR>/configure
-                --prefix=${CMAKE_INSTALL_PREFIX}
-                --enable-shared
-                --enable-optimizations
-                --enable-loadable-sqlite-extensions
-                --disable-ipv6
-                --enable-big-digits=30
-                --with-lto
-                --with-system-expat
-                --with-system-ffi
-                --with-system-libmpdec
-                --with-signal-module
-                --with-threads
-                --with-pymalloc
-                --with-fpectl
-                --with-computed-gotos
-                --with-ensurepip=upgrade)
-else()
-    add_custom_target(Python3ExternalProject)
+        CONFIGURE_COMMAND <SOURCE_DIR>/configure
+            --prefix=${CMAKE_INSTALL_PREFIX}
+            --enable-shared
+            --enable-optimizations
+            --enable-loadable-sqlite-extensions
+            --disable-ipv6
+            --enable-big-digits=30
+            --with-lto
+            --with-system-expat
+            --with-system-ffi
+            --with-system-libmpdec
+            --with-signal-module
+            --with-threads
+            --with-pymalloc
+            --with-fpectl
+            --with-computed-gotos
+            --with-ensurepip=upgrade)
 endif()

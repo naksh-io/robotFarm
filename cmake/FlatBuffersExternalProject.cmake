@@ -5,15 +5,21 @@ endif()
 
 include(ExternalProject)
 
-set(ROBOT_FARM_FLAT_BUFFERS_URL
+option(ROBOT_FARM_SKIP_FLATBUFFERS "Skip Flat Buffers" OFF)
+
+if(ROBOT_FARM_SKIP_FLATBUFFERS)
+    add_custom_target(FlatBuffersExternalProject)
+else()
+    set(ROBOT_FARM_FLAT_BUFFERS_URL
         "https://github.com/google/flatbuffers/archive/refs/tags/v2.0.0.tar.gz"
         CACHE STRING
         "URL of the Flat Buffers source archive")
 
-externalproject_add(FlatBuffersExternalProject
+    externalproject_add(FlatBuffersExternalProject
         PREFIX ${CMAKE_CURRENT_BINARY_DIR}/flatbuffers
         URL ${ROBOT_FARM_FLAT_BUFFERS_URL}
         DOWNLOAD_NO_PROGRESS ON
         CMAKE_ARGS
             ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
             -DFLATBUFFERS_BUILD_SHAREDLIB:BOOL=${BUILD_SHARED_LIBS})
+endif()
