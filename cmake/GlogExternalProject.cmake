@@ -24,4 +24,5 @@ else()
 endif()
 
 add_dependencies(GlogExternalProject
-    GFlagsExternalProject)
+    GFlagsExternalProject
+    GoogleTestExternalProject)
