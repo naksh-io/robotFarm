@@ -99,7 +99,7 @@ Yup!! make money.
 
 # Notes:
 
-## Special Treatment of Python3
+## Python3
 This project can build python3 from source if needed. However, more often that not, its
 more convenient to use the system's version of python3 so the build skips it by default.
 * If you'd like to build python3 from source anyway, provide -DROBOT_FARM_SKIP_PYTHON3:BOOL=OFF as
