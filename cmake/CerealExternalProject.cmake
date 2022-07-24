@@ -4,6 +4,7 @@ if(TARGET CerealExternalProject)
 endif()
 
 include(ExternalProject)
+include(${CMAKE_CURRENT_LIST_DIR}/BoostExternalProject.cmake)
 
 option(ROBOT_FARM_SKIP_CEREAL "Skip Cereal" OFF)
 
@@ -21,3 +22,5 @@ else()
         DOWNLOAD_NO_PROGRESS ON
         CMAKE_ARGS ${ROBOT_FARM_FORWARDED_CMAKE_ARGS})
 endif()
+
+add_dependencies(CerealExternalProject BoostExternalProject)
