@@ -12,7 +12,7 @@ if(ROBOT_FARM_SKIP_GLOG)
     add_custom_target(GlogExternalProject)
 else()
     set(ROBOT_FARM_GLOG_URL
-        "https://github.com/google/glog/archive/refs/tags/v0.5.0.tar.gz"
+        "https://github.com/google/glog/archive/refs/tags/v0.6.0.tar.gz"
         CACHE STRING
         "URL of the Google Log source archive")
 
