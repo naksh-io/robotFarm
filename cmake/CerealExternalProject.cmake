@@ -16,11 +16,17 @@ else()
         CACHE STRING
         "URL of the Cereal source archive")
 
+    set(ROBOT_FARM_CEREAL_CMAKE_ARGS ${ROBOT_FARM_FORWARDED_CMAKE_ARGS})
+
+    if(NOT ${BUILD_SHARED_LIBS})
+        list(APPEND ROBOT_FARM_CEREAL_CMAKE_ARGS -DBoost_USE_STATIC_RUNTIME:BOOL=ON)
+    endif()
+
     externalproject_add(CerealExternalProject
         PREFIX ${CMAKE_CURRENT_BINARY_DIR}/cereal
         URL ${ROBOT_FARM_CEREAL_URL}
         DOWNLOAD_NO_PROGRESS ON
-        CMAKE_ARGS ${ROBOT_FARM_FORWARDED_CMAKE_ARGS})
+        CMAKE_ARGS ${ROBOT_FARM_CEREAL_CMAKE_ARGS})
 endif()
 
 add_dependencies(CerealExternalProject BoostExternalProject)
