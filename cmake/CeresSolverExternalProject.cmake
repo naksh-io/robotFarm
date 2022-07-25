@@ -14,7 +14,7 @@ if(ROBOT_FARM_SKIP_CERES)
     add_custom_target(CeresSolverExternalProject)
 else()
     set(ROBOT_FARM_CERES_SOLVER_URL
-        "https://github.com/ceres-solver/ceres-solver/archive/refs/tags/2.0.0.tar.gz"
+        "https://github.com/ceres-solver/ceres-solver/archive/refs/tags/2.1.0.tar.gz"
         CACHE STRING
         "URL of the Ceres Solver source archive")
 
