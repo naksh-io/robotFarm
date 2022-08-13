@@ -10,6 +10,8 @@ option(ROBOT_FARM_SKIP_PROTOBUF "Skip Protocol Buffers" OFF)
 if(ROBOT_FARM_SKIP_PROTOBUF)
     add_custom_target(ProtobufExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST ProtobufExternalProject)
+
     set(ROBOT_FARM_PROTOBUF_URL
         "https://github.com/protocolbuffers/protobuf/releases/download/v3.19.1/protobuf-all-3.19.1.tar.gz"
         CACHE STRING

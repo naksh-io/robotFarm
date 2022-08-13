@@ -9,6 +9,8 @@ option(ROBOT_FARM_SKIP_NLOHMANN_JSON "Skip Nlohmann's Json" OFF)
 if(ROBOT_FARM_SKIP_NLOHMANN_JSON)
     add_custom_target(NlohmannJsonExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST NlohmannJsonExternalProject)
+
     set(ROBOT_FARM_NLOHMANN_JSON_URL
         "https://github.com/nlohmann/json/archive/refs/tags/v3.10.4.tar.gz"
         CACHE STRING

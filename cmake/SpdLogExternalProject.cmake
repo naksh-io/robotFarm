@@ -10,6 +10,8 @@ option(ROBOT_FARM_SKIP_SPDLOG "Skip spdlog" OFF)
 if(ROBOT_FARM_SKIP_SPDLOG)
     add_custom_target(SpdLogExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST SpdLogExternalProject)
+
     set(ROBOT_FARM_SPDLOG_URL
         "https://github.com/gabime/spdlog/archive/refs/tags/v1.9.2.tar.gz"
         CACHE STRING

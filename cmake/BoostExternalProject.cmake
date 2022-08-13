@@ -11,6 +11,8 @@ option(ROBOT_FARM_SKIP_BOOST "Skip Boost" OFF)
 if(ROBOT_FARM_SKIP_BOOST)
     add_custom_target(BoostExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST BoostExternalProject)
+
     set(ROBOT_FARM_BOOST_URL
         "https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz"
         CACHE STRING "URL of the Boost source archive")

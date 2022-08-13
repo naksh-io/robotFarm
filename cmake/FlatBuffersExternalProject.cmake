@@ -10,6 +10,8 @@ option(ROBOT_FARM_SKIP_FLATBUFFERS "Skip Flat Buffers" OFF)
 if(ROBOT_FARM_SKIP_FLATBUFFERS)
     add_custom_target(FlatBuffersExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST FlatBuffersExternalProject)
+
     set(ROBOT_FARM_FLAT_BUFFERS_URL
         "https://github.com/google/flatbuffers/archive/refs/tags/v2.0.0.tar.gz"
         CACHE STRING

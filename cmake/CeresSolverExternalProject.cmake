@@ -13,6 +13,8 @@ option(ROBOT_FARM_SKIP_CERES "Skip Ceres Solver" OFF)
 if(ROBOT_FARM_SKIP_CERES)
     add_custom_target(CeresSolverExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST CeresSolverExternalProject)
+
     set(ROBOT_FARM_CERES_SOLVER_URL
         "https://github.com/ceres-solver/ceres-solver/archive/refs/tags/2.1.0.tar.gz"
         CACHE STRING

@@ -11,6 +11,8 @@ option(ROBOT_FARM_SKIP_GLOG "Skip Glog" OFF)
 if(ROBOT_FARM_SKIP_GLOG)
     add_custom_target(GlogExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST GlogExternalProject)
+
     set(ROBOT_FARM_GLOG_URL
         "https://github.com/google/glog/archive/refs/tags/v0.6.0.tar.gz"
         CACHE STRING

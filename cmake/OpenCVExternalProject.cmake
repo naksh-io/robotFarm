@@ -18,6 +18,8 @@ option(ROBOT_FARM_SKIP_OPENCV "Skip OpenCV" OFF)
 if(ROBOT_FARM_SKIP_OPENCV)
     add_custom_target(OpenCVExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST OpenCVExternalProject)
+
     option(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB
         "Build OpenCV with non-free contrib modules. Please be sure to comply with the licensing"
         OFF)

@@ -11,6 +11,8 @@ option(ROBOT_FARM_SKIP_OGRE "Skip Ogre" OFF)
 if(ROBOT_FARM_SKIP_OGRE)
     add_custom_target(OgreExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST OgreExternalProject)
+
     set(ROBOT_FARM_OGRE_URL
         "https://github.com/OGRECave/ogre/archive/refs/tags/v13.2.4.tar.gz"
         CACHE STRING

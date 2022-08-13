@@ -32,6 +32,7 @@ list(APPEND ROBOT_FARM_FORWARDED_CMAKE_ARGS -DCMAKE_PREFIX_PATH:STRING="${PREFIX
 list(APPEND ROBOT_FARM_FORWARDED_CMAKE_ARGS "-DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS}")
 list(APPEND ROBOT_FARM_FORWARDED_CMAKE_ARGS "-DBUILD_TESTING:BOOL=${BUILD_TESTING}")
 
+set(ROBOT_FARM_BUILD_LIST "")
 
 #include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/AtlasExternalProject.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/BoostExternalProject.cmake)
@@ -53,5 +54,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Python3ExternalProject.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SpdLogExternalProject.cmake)
 #include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SuiteSparseExternalProject.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/VTKExternalProject.cmake)
+
+message("********* ${ROBOT_FARM_BUILD_LIST}")
 
 add_subdirectory(docker)

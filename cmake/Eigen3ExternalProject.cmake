@@ -11,6 +11,8 @@ option(ROBOT_FARM_SKIP_EIGEN3 "Skip Eigen3" OFF)
 if(ROBOT_FARM_SKIP_EIGEN3)
     add_custom_target(Eigen3ExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST Eigen3ExternalProject)
+
     set(ROBOT_FARM_EIGEN3_URL
         "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz"
         CACHE STRING

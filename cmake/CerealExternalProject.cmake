@@ -11,6 +11,8 @@ option(ROBOT_FARM_SKIP_CEREAL "Skip Cereal" OFF)
 if(ROBOT_FARM_SKIP_CEREAL)
     add_custom_target(CerealExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST CerealExternalProject)
+
     set(ROBOT_FARM_CEREAL_URL
         "https://github.com/USCiLab/cereal/archive/refs/tags/v1.3.2.tar.gz"
         CACHE STRING
