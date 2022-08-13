@@ -1,7 +1,7 @@
 {
     "supportedOS":
     [
-        "ubuntu2204"
+        "Ubuntu 22.04.1 LTS"
     ],
 
     "groupTags":
@@ -10,53 +10,53 @@
         "skip"
     ],
 
-    "packages":
+    "groups":
     [
         {
             "group": "BoostExternalProject",
-            "ubuntu2204": "python3-dev python-is-python3",
+            "Ubuntu 22.04.1 LTS": "python3-dev python-is-python3",
             "tag": "all"
         },
 
         {
-            "group": "CeresExternalProject",
-            "ubuntu2204": "libatlas-base-dev libsuitesparse-dev",
+            "group": "CeresSolverExternalProject",
+            "Ubuntu 22.04.1 LTS": "libatlas-base-dev libsuitesparse-dev",
             "tag": "all"
         },
 
         {
             "group": "OgreExternalProject",
-            "ubuntu2204": "freeglut3-dev libcppunit-dev libfreeimage-dev libfreetype6-dev libgl1-mesa-dev libgles2-mesa-dev libglu1-mesa-dev libpng-dev libpoco-dev libpugixml-dev libsdl2-dev libtbb-dev libxaw7-dev libxrandr-dev libxt-dev libzzip-dev nvidia-cg-toolkit zlib1g-dev",
+            "Ubuntu 22.04.1 LTS": "freeglut3-dev libcppunit-dev libfreeimage-dev libfreetype6-dev libgl1-mesa-dev libgles2-mesa-dev libglu1-mesa-dev libpng-dev libpoco-dev libpugixml-dev libsdl2-dev libtbb-dev libxaw7-dev libxrandr-dev libxt-dev libzzip-dev nvidia-cg-toolkit zlib1g-dev",
             "tag": "all"
         },
 
         {
             "group": "OpenCVExternalProject",
-            "ubuntu2204": "liblapacke-dev libgtk-3-dev ffmpeg libavcodec-dev libavformat-dev libdc1394-22-dev libavresample-dev libswscale-dev libv4l-dev libgstreamer1.0-dev libpng-dev libjpeg-dev libtiff-dev libhdf5-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev",
+            "Ubuntu 22.04.1 LTS": "liblapacke-dev libgtk-3-dev ffmpeg libavcodec-dev libavformat-dev libdc1394-22-dev libavresample-dev libswscale-dev libv4l-dev libgstreamer1.0-dev libpng-dev libjpeg-dev libtiff-dev libhdf5-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev",
             "tag": "all"
         },
 
         {
             "group": "ProtobufExternalProject",
-            "ubuntu2204": "curl",
+            "Ubuntu 22.04.1 LTS": "curl",
             "tag": "all"
         },
 
         {
             "group": "Python3ExternalProject",
-            "ubuntu2204": "libssl-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev libgdbm-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev libffi-dev uuid-dev tk tk-dev linux-headers-generic tcl-dev libmpdec-dev",
+            "Ubuntu 22.04.1 LTS": "libssl-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev libgdbm-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev libffi-dev uuid-dev tk tk-dev linux-headers-generic tcl-dev libmpdec-dev",
             "tag": "skip"
         },
 
         {
             "group": "SuiteSparseExternalProject",
-            "ubuntu2204": "m4",
+            "Ubuntu 22.04.1 LTS": "m4",
             "tag": "all"
         },
 
         {
             "group": "VTKExternalProject",
-            "ubuntu2204": "libgl1-mesa-dev libxt-dev",
+            "Ubuntu 22.04.1 LTS": "libgl1-mesa-dev libxt-dev",
             "tag": "all"
         }
     ]

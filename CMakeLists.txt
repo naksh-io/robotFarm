@@ -55,6 +55,19 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SpdLogExternalProject.cmake)
 #include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SuiteSparseExternalProject.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/VTKExternalProject.cmake)
 
-message("********* ${ROBOT_FARM_BUILD_LIST}")
+set(ROBOT_FARM_SYSTEM_DEPENDENCY_STR "")
+foreach(ITEM ${ROBOT_FARM_BUILD_LIST})
+    execute_process(
+        COMMAND sh scripts/extractDependencies.sh ${ITEM}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        OUTPUT_VARIABLE ITEM_DEPENDENCIES)
+
+    if(ITEM_DEPENDENCIES)
+        string(APPEND ROBOT_FARM_SYSTEM_DEPENDENCY_STR " " ${ITEM_DEPENDENCIES})
+    endif()
+endforeach()
+
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/systemDependencyInstaller.sh
+     "apt-get install -y --no-install-recommends ${ROBOT_FARM_SYSTEM_DEPENDENCY_STR}")
 
 add_subdirectory(docker)
