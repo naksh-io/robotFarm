@@ -1,2 +1,6 @@
+# Build system related.
 *build*
+CMakeUserPresets.json
+
+# IDE related
 .idea
