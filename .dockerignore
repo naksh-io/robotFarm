@@ -1,1 +1,4 @@
 *build*
+.git
+.idea
+docker

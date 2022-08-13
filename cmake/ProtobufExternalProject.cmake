@@ -22,6 +22,8 @@ else()
         URL ${ROBOT_FARM_PROTOBUF_URL}
         DOWNLOAD_NO_PROGRESS ON
         CONFIGURE_COMMAND
+            CC=${CMAKE_C_COMPILER}
+            CXX=${CMAKE_CXX_COMPILER}
             <SOURCE_DIR>/configure
             --prefix=${CMAKE_INSTALL_PREFIX}
             --with-sysroot=${CMAKE_INSTALL_PREFIX})
