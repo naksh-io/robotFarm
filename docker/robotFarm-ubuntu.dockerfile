@@ -1,5 +1,6 @@
 ARG BASE_IMAGE=ubuntu:22.04
 ARG TOOLCHAIN=gnu-12
+ARG BUILD_LIST
 
 FROM ${BASE_IMAGE} AS robot-farm-base
 
@@ -27,18 +28,28 @@ RUN apt-get install -y --no-install-recommends $(sh /tmp/scripts/extractDependen
 
 FROM robot-farm-base AS throwaway-robot-farm-build
 ARG TOOLCHAIN
+ARG BUILD_LIST
 
 COPY . /tmp/robotFarm-src
 
-RUN cmake -G Ninja                                                                      \
-    -S /tmp/robotFarm-src                                                               \
-    -B /tmp/robotFarm-build                                                             \
-    -DCMAKE_BUILD_TYPE:STRING="Release"                                                 \
-    -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/tmp/robotFarm-src/toolchains/${TOOLCHAIN}.cmake    \
-    -DCMAKE_INSTALL_PREFIX:PATH=/opt/robotFarm
+RUN if [[ -z "${BUILD_LIST}" ]]; then                                                       \
+        cmake -G Ninja                                                                      \
+        -S /tmp/robotFarm-src                                                               \
+        -B /tmp/robotFarm-build                                                             \
+        -DCMAKE_BUILD_TYPE:STRING="Release"                                                 \
+        -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/tmp/robotFarm-src/toolchains/${TOOLCHAIN}.cmake    \
+        -DCMAKE_INSTALL_PREFIX:PATH=/opt/robotFarm;                                         \
+    else                                                                                    \
+        cmake -G Ninja                                                                      \
+        -S /tmp/robotFarm-src                                                               \
+        -B /tmp/robotFarm-build                                                             \
+        -DCMAKE_BUILD_TYPE:STRING="Release"                                                 \
+        -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/tmp/robotFarm-src/toolchains/${TOOLCHAIN}.cmake    \
+        -DCMAKE_INSTALL_PREFIX:PATH=/opt/robotFarm                                          \
+        -DROBOT_FARM_REQUESTED_BUILD_LIST:STRING=${BUILD_LIST};                             \
+    fi
 
 RUN apt-get install -y --no-install-recommends $(cat /tmp/robotFarm-build/systemDependencies.txt)
-
 RUN cmake --build /tmp/robotFarm-build
 
 
