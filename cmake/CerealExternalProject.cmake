@@ -24,7 +24,8 @@ else()
         DOWNLOAD_NO_PROGRESS ON
         CMAKE_ARGS
             ${ROBOT_FARM_FORWARDED_CMAKE_ARGS}
-            -DBoost_USE_STATIC_RUNTIME:BOOL=$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>)
+            -DBoost_USE_STATIC_RUNTIME:BOOL=$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>
+            -DBUILD_SANDBOX:BOOL=OFF) # Sandbox fails with warnings.
 endif()
 
 add_dependencies(CerealExternalProject BoostExternalProject)
