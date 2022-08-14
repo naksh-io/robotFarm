@@ -12,7 +12,7 @@ RUN echo $'Acquire::http::Pipeline-Depth 0;\n\
     >> /etc/apt/apt.conf.d/90fix-hashsum-mismatch
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends cmake clang-14 clang++-14 gcc-12 g++-12 git jq make ninja-build && \
+    apt-get install -y --no-install-recommends cmake clang-14 clang++-14 gcc-12 g++-12 git jq ninja-build && \
     apt-get full-upgrade -y && \
     apt-get autoclean -y && \
     apt-get autoremove -y
@@ -30,10 +30,10 @@ RUN cmake -G Ninja                                                              
 
 RUN sh /tmp/robotFarm-build/systemDependencyInstaller.sh
 
-RUN cmake --build /tmp/robotFarm-build --target ProtobufExternalProject
+RUN cmake --build /tmp/robotFarm-build
 
 
 FROM robot-farm-base AS robot-farm
-COPY --from=throwaway-robot-farm-build /opt/robotFarm /opt/
-COPY --from=throwaway-robot-farm-build /tmp/robotFarm-build/systemDependencyInstaller.sh /tmp/
-RUN sh /tmp/systemDependencyInstaller.sh
+COPY --from=throwaway-robot-farm-build /opt/robotFarm /opt/robotFarm
+COPY --from=throwaway-robot-farm-build /tmp/robotFarm-build/systemDependencyInstaller.sh /tmp/systemDependencyInstaller.sh
+RUN sh /tmp/systemDependencyInstaller.sh && rm /tmp/systemDependencyInstaller.sh

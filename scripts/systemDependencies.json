@@ -14,7 +14,7 @@
     [
         {
             "group": "BoostExternalProject",
-            "ubuntu-22.04": "python3-dev python-is-python3",
+            "ubuntu-22.04": "gcc g++ python3-dev python-is-python3",
             "tag": "all"
         },
 
