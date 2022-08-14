@@ -14,7 +14,7 @@
             "cacheVariables": {
                 "BUILD_TESTING": {
                     "type": "BOOL",
-                    "value": true
+                    "value": false
                 },
                 "CMAKE_INSTALL_PREFIX": {
                     "type": "PATH",
