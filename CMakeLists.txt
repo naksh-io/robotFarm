@@ -67,7 +67,6 @@ foreach(ITEM ${ROBOT_FARM_BUILD_LIST})
     endif()
 endforeach()
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/systemDependencyInstaller.sh
-     "apt-get install -y --no-install-recommends ${ROBOT_FARM_SYSTEM_DEPENDENCY_STR}")
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/systemDependencies.txt "${ROBOT_FARM_SYSTEM_DEPENDENCY_STR}")
 
 add_subdirectory(docker)

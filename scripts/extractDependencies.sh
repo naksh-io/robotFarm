@@ -8,7 +8,7 @@
 SCRIPT_DIR=$(dirname "${0}")
 
 GROUP_NAME="${1}"
-OS_NAME="$(grep -oP '(?<=^ID=).+' /etc/os-release | tr -d '"')-$(grep -oP '(?<=^VERSION_ID=).+' /etc/os-release | tr -d '"')"
+OS_NAME="$(grep -oP '(?<=^ID=).+' /etc/os-release | tr -d '"'):$(grep -oP '(?<=^VERSION_ID=).+' /etc/os-release | tr -d '"')"
 
 display_usage() {
     echo "sh installSystemDependencies.sh <GROUP NAME>"
