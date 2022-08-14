@@ -13,11 +13,13 @@ include(${CMAKE_CURRENT_LIST_DIR}/GlogExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/CeresSolverExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/OgreExternalProject.cmake)
 
-option(ROBOT_FARM_SKIP_OPENCV "Skip OpenCV" OFF)
+option(ROBOT_FARM_SKIP_OpenCVExternalProject "Forcefully skip OpenCV" OFF)
 
-if(ROBOT_FARM_SKIP_OPENCV)
+if(ROBOT_FARM_SKIP_OpenCVExternalProject)
     add_custom_target(OpenCVExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST OpenCVExternalProject)
+
     option(ROBOT_FARM_OPENCV_WITH_NON_FREE_CONTRIB
         "Build OpenCV with non-free contrib modules. Please be sure to comply with the licensing"
         OFF)

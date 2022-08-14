@@ -5,11 +5,13 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_PYTHON3 "Skip Python3" ON)
+option(ROBOT_FARM_SKIP_Python3ExternalProject "Forcefully skip Python3" ON)
 
-if(ROBOT_FARM_SKIP_PYTHON3)
+if(ROBOT_FARM_SKIP_Python3ExternalProject)
     add_custom_target(Python3ExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST Python3ExternalProject)
+
     set(ROBOT_FARM_PYTHON3_URL
         "https://github.com/python/cpython/archive/refs/tags/v3.10.1.tar.gz"
         CACHE STRING

@@ -32,26 +32,48 @@ list(APPEND ROBOT_FARM_FORWARDED_CMAKE_ARGS -DCMAKE_PREFIX_PATH:STRING="${PREFIX
 list(APPEND ROBOT_FARM_FORWARDED_CMAKE_ARGS "-DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS}")
 list(APPEND ROBOT_FARM_FORWARDED_CMAKE_ARGS "-DBUILD_TESTING:BOOL=${BUILD_TESTING}")
 
+set(ROBOT_FARM_REQUESTED_BUILD_LIST
+        BoostExternalProject
+        CapnprotoExternalProject
+        CerealExternalProject
+        CeresSolverExternalProject
+        Eigen3ExternalProject
+        FlatBuffersExternalProject
+        GFlagsExternalProject
+        GlogExternalProject
+        GoogleTestExternalProject
+        NlohmannJsonExternalProject
+        OatppExternalProject
+        OatppWebSocketExternalProject
+        OgreExternalProject
+        OpenCVExternalProject
+        ProtobufExternalProject
+        Python3ExternalProject
+        SpdLogExternalProject
+        VTKExternalProject
+    CACHE STRING "Semi-colon seperated list of projects requested by the user. Default is all")
 
-#include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/AtlasExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/BoostExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CapnprotoExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CerealExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CeresSolverExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Eigen3ExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/FlatBuffersExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GFlagsExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GlogExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GoogleTestExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/NlohmannJsonExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OatppExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OatppWebSocketExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OgreExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OpenCVExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/ProtobufExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Python3ExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SpdLogExternalProject.cmake)
-#include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SuiteSparseExternalProject.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/VTKExternalProject.cmake)
+set(ROBOT_FARM_BUILD_LIST "")
+
+foreach(ITEM ${ROBOT_FARM_REQUESTED_BUILD_LIST})
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/${ITEM}.cmake)
+endforeach()
+
+message(STATUS "User requested the build of ${ROBOT_FARM_REQUESTED_BUILD_LIST}")
+message(STATUS "RobotFarm will build ${ROBOT_FARM_BUILD_LIST}")
+
+set(ROBOT_FARM_SYSTEM_DEPENDENCY_STR "")
+foreach(ITEM ${ROBOT_FARM_BUILD_LIST})
+    execute_process(
+        COMMAND sh scripts/extractDependencies.sh ${ITEM}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        OUTPUT_VARIABLE ITEM_DEPENDENCIES)
+
+    if(ITEM_DEPENDENCIES)
+        string(APPEND ROBOT_FARM_SYSTEM_DEPENDENCY_STR " " ${ITEM_DEPENDENCIES})
+    endif()
+endforeach()
+
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/systemDependencies.txt "${ROBOT_FARM_SYSTEM_DEPENDENCY_STR}")
 
 add_subdirectory(docker)

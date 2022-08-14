@@ -5,11 +5,13 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_GFLAGS "Skip GFlags" OFF)
+option(ROBOT_FARM_SKIP_GFlagsExternalProject "Forcefully skip GFlags" OFF)
 
-if(ROBOT_FARM_SKIP_GFLAGS)
+if(ROBOT_FARM_SKIP_GFlagsExternalProject)
     add_custom_target(GFlagsExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST GFlagsExternalProject)
+
     set(ROBOT_FARM_GFLAGS_URL
         "https://github.com/gflags/gflags/archive/refs/tags/v2.2.2.tar.gz"
         CACHE STRING

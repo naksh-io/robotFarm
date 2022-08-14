@@ -6,11 +6,13 @@ endif()
 include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/Python3ExternalProject.cmake)
 
-option(ROBOT_FARM_SKIP_BOOST "Skip Boost" OFF)
+option(ROBOT_FARM_SKIP_BoostExternalProject "Forcefully skip Boost" OFF)
 
-if(ROBOT_FARM_SKIP_BOOST)
+if(ROBOT_FARM_SKIP_BoostExternalProject)
     add_custom_target(BoostExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST BoostExternalProject)
+
     set(ROBOT_FARM_BOOST_URL
         "https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz"
         CACHE STRING "URL of the Boost source archive")

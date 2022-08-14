@@ -5,11 +5,13 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_VTK "Skip VTK" OFF)
+option(ROBOT_FARM_SKIP_VTKExternalProject "Forcefully skip VTK" OFF)
 
-if(ROBOT_FARM_SKIP_VTK)
+if(ROBOT_FARM_SKIP_VTKExternalProject)
     add_custom_target(VTKExternalProject)
 else()
+    list(APPEND ROBOT_FARM_BUILD_LIST VTKExternalProject)
+
     set(ROBOT_FARM_VTK_URL
         "https://github.com/Kitware/VTK/archive/refs/tags/v9.1.0.tar.gz"
         CACHE STRING
