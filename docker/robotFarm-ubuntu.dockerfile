@@ -30,11 +30,11 @@ ARG TOOLCHAIN
 
 COPY . /tmp/robotFarm-src
 
-RUN cmake -G Ninja                                                              \
-    -S /tmp/robotFarm-src                                                       \
-    -B /tmp/robotFarm-build                                                     \
-    -DCMAKE_BUILD_TYPE:STRING="Release"                                         \
-    -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/tmp/robotFarm-src/toolchains/${TOOLCHAIN}.cmake  \
+RUN cmake -G Ninja                                                                      \
+    -S /tmp/robotFarm-src                                                               \
+    -B /tmp/robotFarm-build                                                             \
+    -DCMAKE_BUILD_TYPE:STRING="Release"                                                 \
+    -DCMAKE_TOOLCHAIN_FILE:FILEPATH=/tmp/robotFarm-src/toolchains/${TOOLCHAIN}.cmake    \
     -DCMAKE_INSTALL_PREFIX:PATH=/opt/robotFarm
 
 RUN apt-get install -y --no-install-recommends $(cat /tmp/robotFarm-build/systemDependencies.txt)
