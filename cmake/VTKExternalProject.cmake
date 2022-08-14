@@ -5,9 +5,9 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_VTK "Skip VTK" OFF)
+option(ROBOT_FARM_SKIP_VTKExternalProject "Forcefully skip VTK" OFF)
 
-if(ROBOT_FARM_SKIP_VTK)
+if(ROBOT_FARM_SKIP_VTKExternalProject)
     add_custom_target(VTKExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST VTKExternalProject)

@@ -5,9 +5,9 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_PROTOBUF "Skip Protocol Buffers" OFF)
+option(ROBOT_FARM_SKIP_ProtobufExternalProject "Forcefully skip Protocol Buffers" OFF)
 
-if(ROBOT_FARM_SKIP_PROTOBUF)
+if(ROBOT_FARM_SKIP_ProtobufExternalProject)
     add_custom_target(ProtobufExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST ProtobufExternalProject)

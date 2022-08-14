@@ -4,9 +4,9 @@ if(TARGET NlohmannJsonExternalProject)
 endif()
 
 include(ExternalProject)
-option(ROBOT_FARM_SKIP_NLOHMANN_JSON "Skip Nlohmann's Json" OFF)
+option(ROBOT_FARM_SKIP_NlohmannJsonExternalProject "Forcefully skip Nlohmann's Json" OFF)
 
-if(ROBOT_FARM_SKIP_NLOHMANN_JSON)
+if(ROBOT_FARM_SKIP_NlohmannJsonExternalProject)
     add_custom_target(NlohmannJsonExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST NlohmannJsonExternalProject)

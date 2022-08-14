@@ -8,9 +8,9 @@ include(${CMAKE_CURRENT_LIST_DIR}/GFlagsExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/GlogExternalProject.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/Eigen3ExternalProject.cmake)
 
-option(ROBOT_FARM_SKIP_CERES "Skip Ceres Solver" OFF)
+option(ROBOT_FARM_SKIP_CeresSolverExternalProject "Forcefully skip Ceres Solver" OFF)
 
-if(ROBOT_FARM_SKIP_CERES)
+if(ROBOT_FARM_SKIP_CeresSolverExternalProject)
     add_custom_target(CeresSolverExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST CeresSolverExternalProject)

@@ -5,9 +5,9 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_CAPNPROTO "Skip Cap'n proto" OFF)
+option(ROBOT_FARM_SKIP_CapnprotoExternalProject "Forcefully skip Cap'n proto" OFF)
 
-if(ROBOT_FARM_SKIP_CAPNPROTO)
+if(ROBOT_FARM_SKIP_CapnprotoExternalProject)
     add_custom_target(CapnprotoExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST CapnprotoExternalProject)

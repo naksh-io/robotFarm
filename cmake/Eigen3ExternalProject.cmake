@@ -6,9 +6,9 @@ endif()
 include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/BoostExternalProject.cmake)
 
-option(ROBOT_FARM_SKIP_EIGEN3 "Skip Eigen3" OFF)
+option(ROBOT_FARM_SKIP_Eigen3ExternalProject "Forcefully skip Eigen3" OFF)
 
-if(ROBOT_FARM_SKIP_EIGEN3)
+if(ROBOT_FARM_SKIP_Eigen3ExternalProject)
     add_custom_target(Eigen3ExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST Eigen3ExternalProject)

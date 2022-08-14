@@ -5,9 +5,9 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_OATPP "Skip Oatpp" OFF)
+option(ROBOT_FARM_SKIP_OatppExternalProject "Forcefully skip Oatpp" OFF)
 
-if(ROBOT_FARM_SKIP_OATPP)
+if(ROBOT_FARM_SKIP_OatppExternalProject)
     add_custom_target(OatppExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST OatppExternalProject)

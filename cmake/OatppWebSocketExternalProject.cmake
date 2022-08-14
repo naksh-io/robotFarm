@@ -6,9 +6,9 @@ endif()
 include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/OatppExternalProject.cmake)
 
-option(ROBOT_FARM_SKIP_OATPP_WEBSOCKET "Skip Oatpp Websocket" OFF)
+option(ROBOT_FARM_SKIP_OatppWebSocketExternalProject "Forcefully skip Oatpp Websocket" OFF)
 
-if(ROBOT_FARM_SKIP_OATPP_WEBSOCKET)
+if(ROBOT_FARM_SKIP_OatppWebSocketExternalProject)
     add_custom_target(OatppWebSocketExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST OatppWebSocketExternalProject)

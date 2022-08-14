@@ -6,9 +6,9 @@ endif()
 include(ExternalProject)
 include(${CMAKE_CURRENT_LIST_DIR}/Python3ExternalProject.cmake)
 
-option(ROBOT_FARM_SKIP_BOOST "Skip Boost" OFF)
+option(ROBOT_FARM_SKIP_BoostExternalProject "Forcefully skip Boost" OFF)
 
-if(ROBOT_FARM_SKIP_BOOST)
+if(ROBOT_FARM_SKIP_BoostExternalProject)
     add_custom_target(BoostExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST BoostExternalProject)

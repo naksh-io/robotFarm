@@ -5,9 +5,9 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_GTEST "Skip Google Test" OFF)
+option(ROBOT_FARM_SKIP_GoogleTestExternalProject "Forcefully skip Google Test" OFF)
 
-if(ROBOT_FARM_SKIP_GTEST)
+if(ROBOT_FARM_SKIP_GoogleTestExternalProject)
     add_custom_target(GoogleTestExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST GoogleTestExternalProject)

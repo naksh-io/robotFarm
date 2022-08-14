@@ -5,9 +5,9 @@ endif()
 
 include(ExternalProject)
 
-option(ROBOT_FARM_SKIP_FLATBUFFERS "Skip Flat Buffers" OFF)
+option(ROBOT_FARM_SKIP_FlatBuffersExternalProject "Forcefully skip Flat Buffers" OFF)
 
-if(ROBOT_FARM_SKIP_FLATBUFFERS)
+if(ROBOT_FARM_SKIP_FlatBuffersExternalProject)
     add_custom_target(FlatBuffersExternalProject)
 else()
     list(APPEND ROBOT_FARM_BUILD_LIST FlatBuffersExternalProject)
