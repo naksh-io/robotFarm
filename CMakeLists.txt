@@ -1,6 +1,13 @@
-cmake_minimum_required(VERSION 3.5.2)
+cmake_minimum_required(VERSION 3.16)
 
 project(robotFarm VERSION 0.1.0.0 LANGUAGES C CXX)
+
+# Cmake 3.24.1 improves the behaviour of external project by utilizing the time of
+# extraction of the files from the downloaded source archive to determine the need
+# for recompilation. We set the corresponding policy to new to leverage this benefit.
+if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.24.1)
+    cmake_policy(SET CMP0135 NEW)
+endif()
 
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Global flag to build shared libraries [Default: OFF]")
 set(BUILD_TESTING OFF CACHE BOOL "Global flag used by CTest [Default: OFF]")
@@ -51,7 +58,8 @@ set(ROBOT_FARM_REQUESTED_BUILD_LIST
         Python3ExternalProject
         SpdLogExternalProject
         VTKExternalProject
-    CACHE STRING "Semi-colon seperated list of projects requested by the user. Default is all")
+    CACHE STRING
+    "Semi-colon seperated list of projects requested by the user. Default includes all")
 
 set(ROBOT_FARM_BUILD_LIST "")
 
